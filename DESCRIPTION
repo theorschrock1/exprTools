@@ -1,0 +1,22 @@
+Package: exprTools
+Type: Package
+Title: Tools for manipulating R expressions
+Version: 0.1.0
+Author: Theo Schrock
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Tools for manipulating R expressions.
+Imports:
+    checkmate,
+    sUtils,
+    R6,
+    tictoc,
+    rlang,
+    stringr,
+    glue
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+URL: https://github.com/theorschrock1/exprTools
+BugReports: https://github.com/theorschrock1/exprTools/issues
+Suggests: 
+    testthat
