@@ -67,7 +67,7 @@ CodeTree = R6Class(
           match.first=match.first
         ),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$find_symbols,
           self_expr = self_expr,
@@ -132,7 +132,7 @@ CodeTree = R6Class(
         constant = constant_f(x),
         symbol = constant_f(x),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$.find_calls_add_arg ,
           self_expr = self_expr,
@@ -223,7 +223,7 @@ CodeTree = R6Class(
         constant = constant_f(x),
         symbol = constant_f(x),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$find_calls,
           self_expr = self_expr
@@ -271,7 +271,7 @@ CodeTree = R6Class(
         constant = constant_f(x),
         symbol = constant_f(x),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$find_operators,
           self_expr = self_expr,
@@ -329,7 +329,7 @@ CodeTree = R6Class(
         constant = constant_f(x),
         symbol = constant_f(x),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$find_call_name,
           self_expr = self_expr,
@@ -403,7 +403,7 @@ CodeTree = R6Class(
           constant = constant_f(x),
           symbol = constant_f(x),
           # Recursive cases
-          pairlist = flat_map(
+          pairlist = map(
             .x = as.list(x),
             .f = self$.return_named_bracket,
             self_expr = self_expr,
@@ -474,7 +474,7 @@ CodeTree = R6Class(
         constant = constant_f(x),
         symbol = constant_f(x),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$.return_call,
           self_expr = self_expr,
@@ -488,7 +488,7 @@ CodeTree = R6Class(
             if(grep&&grepl(call_name,current_call))
                return(x)
 
-            if(current_call%in%call_name)
+            if(!grep&&current_call%in%call_name)
               return(x)
 
 
@@ -537,7 +537,7 @@ CodeTree = R6Class(
         constant = return(FALSE),
         symbol = return(FALSE),
         # Recursive cases
-        pairlist = flat_map(
+        pairlist = map(
           .x = as.list(x),
           .f = self$.has_call_type,
           self_expr = self_expr,
@@ -602,7 +602,7 @@ CodeTree = R6Class(
           constant = FALSE,
           symbol =FALSE,
           # Recursive cases
-          pairlist = flat_map(
+          pairlist = map(
             .x = as.list(x),
             .f = self$.has_named_bracket,
             self_expr = self_expr,
