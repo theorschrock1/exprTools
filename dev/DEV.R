@@ -10,22 +10,17 @@ library(sDevTools)
 library(exprTools)
 loadUtils()
 #Dev -----
-expr_deparse_lines<-
- function(x){
-   #Documentation
-   fdoc("deparse multiple lines of R code","[character]")
-   #Assertions
-   x<-enexpr(x)
-   assert_call(x, call_name = "{")
-   #TO DO
-   as_glue(exprs_deparse(call_args(x)))
- }
-#document------
- fn_document(expr_deparse_lines,{
-expr_deparse_lines({
-  sq<-function(x){
-    x^2
+
+build_test("expr_extract_call",init=NULL,{
+  expr_extract_call(expr({
+    assert_all(x)
+    assert_fun(x)
+    x<-assert_mult(x)
+    if(x){
+      x<-assert_character(x)
     }
-  sq(2)
-  sq(4)
-})})
+    fn=function(x){x+1}
+  }),call_name="assert",grep=TRUE,skip_first = FALSE)
+  expr_extract_call(expr(data[,sum(x)]),call_name="sum",grep=FALSE,skip_first = FALSE)
+  expr_extract_call(expr(data[,list(sum(x),mean(x))]),call_name=c("sum","mean"),grep=FALSE,skip_first = FALSE)
+})

@@ -438,7 +438,7 @@ CodeTree = R6Class(
       self$tmp_expr=self$expr
       self$.return_named_bracket(name=name,skip_first = skip_first,grep=grep)
     },
-    .return_call = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,call_name,skip_first=FALSE) {
+    .return_call = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,call_name,skip_first=FALSE,grep=FALSE) {
       #replacement<-'list'
       #if(is.null(index))print("NULL")
       flat_map <- function(.x, .f,index_start=1L, ...) {
@@ -453,7 +453,8 @@ CodeTree = R6Class(
           self_expr = self_expr,
           index_start = 2,
           call_name=call_name,
-          skip_first=FALSE
+          skip_first=FALSE,
+          grep=grep
         )
       }else{
       if(!is.null(index)){
@@ -478,12 +479,18 @@ CodeTree = R6Class(
           .f = self$.return_call,
           self_expr = self_expr,
           call_name=call_name,
-          skip_first=FALSE
+          skip_first=FALSE,
+          grep=grep
         ),
         call = {
-          if(as.character(x[[1]])%in%call_name){
-            return(x)
-          }else{
+          current_call=as.character(x[[1]])
+
+            if(grep&&grepl(call_name,current_call))
+               return(x)
+
+            if(current_call%in%call_name)
+              return(x)
+
 
             flat_map(
               .x = call_args(x),
@@ -491,18 +498,19 @@ CodeTree = R6Class(
               self_expr = self_expr,
               index_start = 2,
               call_name=call_name,
-              skip_first=FALSE
+              skip_first=FALSE,
+              grep=grep
             )
 
-          }}
+          }
       )
 
       }
       unlist(out)
     },
-    return_call=function(call_name,skip_first=TRUE){
+    return_call=function(call_name,grep,skip_first=TRUE){
       self$tmp_expr=self$expr
-      self$.return_call(call_name=call_name,skip_first = skip_first)
+      self$.return_call(call_name=call_name,grep=grep,skip_first = skip_first)
     },
     .has_call_type = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,call_name,skip_first) {
       if(expr_type(x)=='call'&skip_first&&x[[1]]!=sym('[')){
