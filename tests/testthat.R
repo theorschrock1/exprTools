@@ -1,5 +1,4 @@
-library(testthat)
-library(exprTools)
 library(checkmate)
+library(sDevTest)
 
 test_check("exprTools")
