@@ -1,0 +1,11 @@
+test_that("call_has_unnamed_args", {
+  local_edition(3)
+  x = expr(fn(x, y))
+  expect_snapshot(call_has_unnamed_args(x), cran = TRUE)
+  x = expr(fn(x = x, y = y))
+  expect_snapshot(call_has_unnamed_args(x), cran = TRUE)
+  x = expr(fn(x = x, y))
+  expect_snapshot(call_has_unnamed_args(x), cran = TRUE)
+  x = expr(fn(x, y = y))
+  expect_snapshot(call_has_unnamed_args(x), cran = TRUE)
+})
