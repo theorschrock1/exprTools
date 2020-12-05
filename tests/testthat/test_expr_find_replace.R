@@ -1,0 +1,11 @@
+test_that("expr_find_replace", {
+  local_edition(3)
+  find = expr(J)
+  in_expr = expr(data[, .(J)])
+  replacement = exprs(sum_mpg = sum(mpg), max_mpg = max(mpg))
+  expect_snapshot(expr_find_replace(find, replacement, in_expr), cran = TRUE)
+  in_expr = expr(list(list(J), list(J)))
+  replacement = exprs(sum_mpg = sum(mpg), max_mpg = max(mpg), min_mpg = min(mpg))
+  expect_snapshot(expr_find_replace(find, replacement, in_expr, match.first = FALSE), cran = TRUE)
+  expect_snapshot(expr_find_replace(find, replacement, in_expr, match.first = TRUE), cran = TRUE)
+})
