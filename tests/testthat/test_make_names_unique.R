@@ -1,0 +1,11 @@
+test_that("make_names_unique", {
+  local_edition(3)
+  x = c("x", "x", "x(2)", NA, "V1", "V2", "", "x(2)", "y", "y", "V", "x(2)")
+  expect_snapshot(make_names_unique(x), cran = TRUE)
+  x = c("", "", "", "", "")
+  expect_snapshot(make_names_unique(x), cran = TRUE)
+  x = rep(letters[1:4], each = 4)
+  expect_snapshot(make_names_unique(x), cran = TRUE)
+  x = c(NA, NA, NA, NA, NA)
+  expect_snapshot(make_names_unique(x), cran = TRUE)
+})
