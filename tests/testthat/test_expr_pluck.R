@@ -1,0 +1,10 @@
+test_that("expr_pluck", {
+  local_edition(3)
+  x = expr(list(c("a", "b", "c"), 1:5, TRUE))
+  expect_snapshot(expr_pluck(x, c(1)), cran = TRUE)
+  expect_snapshot(expr_pluck(x, c(2)), cran = TRUE)
+  expect_snapshot(expr_pluck(x, c(3)), cran = TRUE)
+  expect_snapshot(expr_pluck(x, c(2, 4)), cran = TRUE)
+  expect_snapshot(expr_pluck(x, c(3, 1)), cran = TRUE)
+  expect_snapshot(expr_pluck(x, c(3, 5)), cran = TRUE)
+})
