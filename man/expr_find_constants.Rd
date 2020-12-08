@@ -4,12 +4,14 @@
 \alias{expr_find_constants}
 \title{Extract constants from an R expression.}
 \usage{
-expr_find_constants(x, type = NULL)
+expr_find_constants(x, type = NULL, unique = TRUE)
 }
 \arguments{
-\item{x}{[expr]}
+\item{x}{\code{[expr]}}
 
-\item{type}{[character]  NULL is ok.  Defaults to NULL}
+\item{type}{\code{[character]}  NULL is ok.  Defaults to NULL}
+
+\item{unique}{\code{[logical(1)]} return unique values? Defaults to}
 }
 \value{
 \code{expr_find_constants}: [vector] a vector of type matches

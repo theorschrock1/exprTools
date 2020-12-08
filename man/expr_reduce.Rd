@@ -9,7 +9,7 @@ expr_reduce(x, func = `\%>\%`)
 \arguments{
 \item{x}{[list] a list of unevaluated expression}
 
-\item{func}{[function]  Defaults to %>%}
+\item{func}{[function]  Defaults to \code{\%>\%}}
 }
 \value{
 An R expression

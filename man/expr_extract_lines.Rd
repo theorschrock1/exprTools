@@ -6,6 +6,9 @@
 \usage{
 expr_extract_lines(x)
 }
+\arguments{
+\item{x}{[call]  Must be a bracketed expression.}
+}
 \value{
 \code{expr_make_lines}: [exprs]
 }

@@ -7,20 +7,18 @@ runTests(package="exprTools")
 ## INSTALL: CTRL + SHIFT + B
 sDevTools::clearEnv() ## CTRL + SHIFT + R
 library(sDevTools)
-library(exprTools)
-loadUtils()
+sDevTools::loadUtils()
 #Dev -----
+fn_call_name<-
+ function(n=1){
+   #Documentation
+   fdoc("Get the name of the current function call","[character(1)]")
+   #Assertions
+   assert_integerish(n,len=1)
+   #TO DO
+   calls<-sys.calls()
+   deparse(calls[[length(calls)-n]][[1]])
 
-build_test("expr_extract_call",init=NULL,{
-  expr_extract_call(expr({
-    assert_all(x)
-    assert_fun(x)
-    x<-assert_mult(x)
-    if(x){
-      x<-assert_character(x)
-    }
-    fn=function(x){x+1}
-  }),call_name="assert",grep=TRUE,skip_first = FALSE)
-  expr_extract_call(expr(data[,sum(x)]),call_name="sum",grep=FALSE,skip_first = FALSE)
-  expr_extract_call(expr(data[,list(sum(x),mean(x))]),call_name=c("sum","mean"),grep=FALSE,skip_first = FALSE)
-})
+ }
+#document------
+ fn_document(fn_call_name,overwrite = TRUE)

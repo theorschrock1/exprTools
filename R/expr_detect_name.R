@@ -1,7 +1,7 @@
 #' Detect a name in an expr.
 
 #' @name expr_detect_name
-#' @param x
+#' @param x \code{[expr]} an r expression.
 #' @param name  \code{[character]}
 #' @param search_in_strings  \code{[logical]}  Defaults to \code{FALSE}
 #' @return \code{expr_detect_name}: Logical(1)
@@ -29,7 +29,7 @@ expr_detect_name <- function(x, name, search_in_strings = FALSE) {
         } else {
             return(FALSE)
         }
-    }, pairlist = purrr::some(as.list(x), expr_detect_name, name = name, search_in_strings = search_in_strings), 
+    }, pairlist = purrr::some(as.list(x), expr_detect_name, name = name, search_in_strings = search_in_strings),
         call = purrr::some(as.list(x), expr_detect_name, name = name, search_in_strings = search_in_strings))
     # Returns: Logical(1)
 }

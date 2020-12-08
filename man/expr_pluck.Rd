@@ -6,6 +6,11 @@
 \usage{
 expr_pluck(x, index)
 }
+\arguments{
+\item{x}{\code{[expr]}}
+
+\item{index}{\code{[integer]} the index to pluck. \code{NA} values not permitted.}
+}
 \value{
 \code{expr_pluck}: [expr]
 }

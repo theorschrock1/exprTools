@@ -5,7 +5,7 @@
 \alias{expr_extract_call}
 \title{Extract calls from an expr}
 \usage{
-expr_extract_call(x, call_name, skip_first = TRUE)
+expr_extract_call(x, call_name, grep = FALSE, skip_first = TRUE)
 
 expr_has_call_name(x, call_name, skip_first = TRUE)
 }
@@ -13,9 +13,13 @@ expr_has_call_name(x, call_name, skip_first = TRUE)
 \item{x}{an expr}
 
 \item{call_name}{the call or function name}
+
+\item{grep}{should calls be matched based on a regex pattern? Defaults to false}
+
+\item{skip.first}{\code{[logical(1)]} should the first call be skipped?}
 }
 \value{
-all calls matching the function name
+\code{[list(exprs)]} all calls matching the function name. Note: This function does not search recursively.
 
 Logical TRUE/FALSE
 }

@@ -16,10 +16,10 @@
 #' expr_name_call_args(call)
 
 #' @export
-expr_name_call_args<-function (x)
+expr_name_call_args<-function (x,env=caller_env())
 {
     assert_call(x)
-    arg_names <- fn_fmls_names(eval(x[[1]]))
+    arg_names <- fn_fmls_names(eval(x[[1]],envir=env))
 
     if(!call_has_unnamed_args(x)){
         named_args <- call_args(x)

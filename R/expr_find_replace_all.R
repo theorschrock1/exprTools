@@ -7,6 +7,7 @@
 #' @return \code{expr_find_replace_all}: [expr(1)]
 #' @examples
 
+
 #'  in_expr = expr(data[, .(J), by = by])
 #'  find = exprs(data, J, by)
 #'  replacement = exprs(mtcars, sum(mpg), .(cyl, vs))

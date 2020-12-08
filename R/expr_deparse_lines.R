@@ -1,7 +1,7 @@
 #' deparse multiple lines of R code.
 
 #' @name expr_deparse_lines
-#' @param x  \code{[call]}  Must be a call from function \code{'{'}.
+#' @param x  \code{[call]}  Must be a bracketed expression.
 #' @return \code{expr_deparse_lines}: [character]
 #' @examples
 

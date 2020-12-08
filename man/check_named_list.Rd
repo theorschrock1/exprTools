@@ -2,24 +2,24 @@
 % Please edit documentation in R/check_named_list.R
 \name{check_named_list}
 \alias{check_named_list}
-\title{Assert a list's names and structure.}
+\title{Check list names and structure.}
 \usage{
 check_named_list(x, structure, null.ok = FALSE, extra.items = FALSE)
 }
 \arguments{
-\item{x}{\code{[call]}}
+\item{x}{\code{[object]} an object to check}
 
-\item{structure}{\code{[call]}  Must be a call from function \code{c('.', 'list')}.}
+\item{structure}{\code{[list]}  Must be a named list.}
 
 \item{null.ok}{\code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}}
 
 \item{extra.items}{\code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}}
 }
 \value{
-\code{check_named_list}: invisible(x)
+\code{check_named_list}: \code{[TRUE|character(message)]}
 }
 \description{
-Assert a list's names and structure.
+Check list names and structure.
 }
 \examples{
  check_named_list(list(x = c('c', NA_character_), y = 1:5),

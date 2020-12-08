@@ -4,7 +4,7 @@
 \alias{expr_call_modify}
 \title{Modify arguments in a call.}
 \usage{
-expr_call_modify(call_expr, ...)
+expr_call_modify(call_expr, ..., env = caller_env())
 }
 \arguments{
 \item{call_expr}{[call]}

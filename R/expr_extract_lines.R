@@ -1,7 +1,7 @@
 #' Extract R code lines as a list of exprs.
 
 #' @name expr_extract_lines
-#' @param x  [call]  Must be a call from function '{'.
+#' @param x  [call]  Must be a bracketed expression.
 #' @return \code{expr_make_lines}: [exprs]
 #' @examples
 

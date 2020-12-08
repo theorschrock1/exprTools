@@ -3,7 +3,7 @@
 #'
 
 #' @name expr_has_call_name
-#' @param x \code{[expression] the target expression.
+#' @param x \code{[expr]} the target expression.
 #' @param call_name \code{[character]} the call or function name to match. Multiple call names allowed when grep is set to false.
 #' @param skip.first \code{[logical(1)]} should the first call be skipped?
 #' @param grep should calls be matched based on a regex pattern? Defaults to false
@@ -13,7 +13,6 @@
 #' @examples
 
 #' x=expr(data[,.(sum(mpg))])
-
 #' call_name = "sum"
 #' expr_extract_call(x,call_name)
 

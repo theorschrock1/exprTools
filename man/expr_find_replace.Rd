@@ -20,13 +20,13 @@ an expression
 Find and replace symbol names in an expr
 }
 \examples{
-data=data.table(mtcars)
-in_expr=expr(data[,.(J)])
-find = J
-replacement= exprs(sum_mpg=sum(mpg),max_mpg=max(mpg))
-out=expr_find_replace(find,replacement,in_expr)
-print(out)
-out \%>\% eval()
-in_expr=expr(.(sum(x),sum(x),sum(x)))
-expr_find_replace(find,replacement,in_expr,match.first=TRUE)
+ find = expr(J)
+ in_expr = expr(data[, .(J)])
+ replacement = exprs(sum_mpg = sum(mpg), max_mpg = max(mpg))
+ expr_find_replace(find, replacement, in_expr)
+
+ in_expr = expr(list(list(J),list(J)))
+ replacement = exprs(sum_mpg = sum(mpg), max_mpg = max(mpg),min_mpg=min(mpg))
+ expr_find_replace(find, replacement, in_expr, match.first = FALSE)
+ expr_find_replace(find, replacement, in_expr, match.first = TRUE)
 }

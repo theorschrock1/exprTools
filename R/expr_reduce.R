@@ -4,7 +4,7 @@
 
 #' @name expr_reduce
 #' @param x  [list] a list of unevaluated expression
-#' @param func  [function]  Defaults to %>%
+#' @param func  [function]  Defaults to \code{\%>\%}
 #' @return  An R expression
 #' @examples
 #'

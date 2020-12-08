@@ -34,11 +34,11 @@
 #'  expr_call_modify(call_expr, f = 3, a = zap())
 
 #' @export
-expr_call_modify <- function(call_expr, ...) {
+expr_call_modify <- function(call_expr, ...,env=caller_env()) {
     # Modify arguments in a call. Use zap() to remove an argument.
     assert_call(call_expr)
-    call_expr <- expr_name_call_args(call_expr)
-    fn_arg_names <- fn_fmls_names(eval(call_expr[[1]]))
+    call_expr <- expr_name_call_args(call_expr,env=env)
+    fn_arg_names <- fn_fmls_names(eval(call_expr[[1]],envir=env))
     new_args = enexprs(...)
     if (!names(new_args) %all_in% fn_arg_names && "..." %nin% fn_arg_names)
 
@@ -50,7 +50,7 @@ expr_call_modify <- function(call_expr, ...) {
         new_args = c(new_args, remove_args)
     }
 
-    out <- call_modify(call_expr, !!!new_args)
-    expr_name_call_args(out)
+    out <- call_modify(call_expr, !!!new_args,.env =env)
+    expr_name_call_args(out,env=env )
     # Returns: [Call]
 }

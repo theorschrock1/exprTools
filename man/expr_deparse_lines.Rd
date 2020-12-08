@@ -6,6 +6,9 @@
 \usage{
 expr_deparse_lines(x)
 }
+\arguments{
+\item{x}{\code{[call]}  Must be a bracketed expression.}
+}
 \value{
 \code{expr_deparse_lines}: [character]
 }

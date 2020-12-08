@@ -21,7 +21,7 @@ CodeTree = R6Class(
     },
     find_replace_syms=function(symbol,replace_with=c('exprs',"expr"),match.first=FALSE){
       replace_with=match.arg(replace_with,c('exprs',"expr"))
-      replacement=char_approxfun(c('exprs',"expr"),c('!!!replacement','!!replacement'))(replace_with)
+      replacement=chr_approx(c('exprs',"expr"),c('!!!replacement','!!replacement'))(replace_with)
       self$tmp_expr=self$expr
 
      out=try( self$find_symbols(symbol=symbol,replacement=replacement,match.first=match.first),silent=T)
@@ -655,16 +655,6 @@ CodeTree = R6Class(
       self$find_call_name(call_name=call_name,replacement=replacement)
       self$tmp_expr
     },
-    # replace_symbol=function(x,self_expr,symbol,replacement){
-    #   if(x==symbol){
-    #     tmp=expr(self_expr<-replacement)
-    #     tmp[[2]]<-expr(!!self_expr)
-    #     tmp[[3]]<-expr(parse_expr(replacement))
-    #     eval(tmp)
-    #     return(TRUE)
-    #   }
-    #   return(FALSE)
-    # },
     replace_=function(x,self_expr,symbol,replacement,match.first=FALSE){
 
       if(is_expr_equal(x,symbol)){

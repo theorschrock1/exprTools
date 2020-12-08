@@ -4,20 +4,16 @@
 \alias{assert_named_list}
 \title{Assert list names and structure.}
 \usage{
-assert_named_list(
-  x,
-  structure,
-  null.ok = FALSE,
-  extra.items = FALSE,
-  env = caller_fn()
-)
+assert_named_list(x, structure, null.ok = FALSE, extra.items = FALSE)
 }
 \arguments{
-\item{null.ok}{\code{[logical]}  Defaults to \code{FALSE}}
+\item{x}{\code{[object]} an object to check}
 
-\item{extra.items}{\code{[logical]}  Defaults to \code{FALSE}}
+\item{structure}{\code{[list]}  Must be a named list.}
 
-\item{env}{\code{[function]}  Defaults to \code{caller_fn()}}
+\item{null.ok}{\code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}}
+
+\item{extra.items}{\code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}}
 }
 \value{
 \code{assert_named_list}: invisible(x)

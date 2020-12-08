@@ -11,7 +11,7 @@ expr_insert(x, y, index)
 
 \item{y}{\code{[expr]}}
 
-\item{index}{\code{[integerish]}  NA values are ok.}
+\item{index}{\code{[integerish]}  NA values are not permitted.}
 }
 \value{
 \code{expr_insert}: [expr]
@@ -26,4 +26,6 @@ Insert an expr into an expr.
  y <- expr(LETTERS[1:3])
  expr_insert(x, y, c(2))
  expr_insert(x, y, c(2, 4))
+ expr_insert(x,c(2, 4))<-y
+ y
 }

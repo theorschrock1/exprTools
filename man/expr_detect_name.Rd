@@ -7,6 +7,8 @@
 expr_detect_name(x, name, search_in_strings = FALSE)
 }
 \arguments{
+\item{x}{\code{[expr]} an r expression.}
+
 \item{name}{\code{[character]}}
 
 \item{search_in_strings}{\code{[logical]}  Defaults to \code{FALSE}}

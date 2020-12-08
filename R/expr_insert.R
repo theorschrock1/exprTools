@@ -3,7 +3,7 @@
 #' @name expr_insert
 #' @param x  \code{[expr]}
 #' @param y  \code{[expr]}
-#' @param index  \code{[integerish]}  NA values are ok.
+#' @param index  \code{[integerish]}  NA values are not permitted.
 #' @return \code{expr_insert}: [expr]
 #' @examples
 
@@ -13,6 +13,9 @@
 #'  y <- expr(LETTERS[1:3])
 #'  expr_insert(x, y, c(2))
 #'  expr_insert(x, y, c(2, 4))
+#'  expr_insert(x,c(2, 4))<-y
+#'  y
+
 #' @export
 expr_insert <- function(x, y, index) {
     # Insert an expr into an expr
@@ -22,4 +25,8 @@ expr_insert <- function(x, y, index) {
     eval(parse_expr(c("x", glue("[[{index}]]"), "<-y") %sep% ""))
     x
     # Returns: [expr]
+}
+#' @export
+`expr_insert<-`=function(x,value,index){
+    expr_insert(x,y=value,index)
 }

@@ -4,10 +4,12 @@
 \alias{expr_assignment_to_list}
 \title{Transform expressions with assignments to a named list of expressions}
 \usage{
-expr_assignment_to_list(x)
+expr_assignment_to_list(x, make.names = TRUE)
 }
 \arguments{
 \item{x}{an expr or list of exprs with assignment/s}
+
+\item{make.names}{\code{[logical(1)]} make names for exprs without assignments? Defaults to \code{TRUE}.}
 }
 \value{
 a named list of expressions
@@ -16,7 +18,23 @@ a named list of expressions
 Transform expressions with assignments to a named list of expressions
 }
 \examples{
-f <- (c=f+1) ~ (b=f+1) + f(d)
-x<-expr_get_formula_args(f)
-expr_assignment_to_list(x)
+ x <- call_args(expr({
+ g=function(x)x+3
+ c = g(1)
+ b = c + 1
+ }))
+ expr_assignment_to_list(x)
+ x <- call_args(expr({
+ g=function(x)x+3
+ c =function(y){
+ x+3
+ }
+ if(y==1){
+ x
+ }else{
+ y
+ }}
+ ))
+ expr_assignment_to_list( x )
+ expr_assignment_to_list( x,make.names=FALSE )
 }

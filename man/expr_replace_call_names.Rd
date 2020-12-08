@@ -4,18 +4,22 @@
 \alias{expr_replace_call_names}
 \title{Find and replace call names in an expression.}
 \usage{
-expr_replace_call_names(expr, call_name, replacement)
+expr_replace_call_names(x, call_name, replacement)
 }
 \arguments{
-\item{expr}{[expr] an expession}
+\item{x}{\code{[expr]} an R expression}
 
-\item{call_name}{[character] a call name or names}
+\item{call_name}{\code{[character]} a call name or names}
 
-\item{replacement}{[character]  Must have an exact length of or equal to one of the following: [1,length(call_names)].}
+\item{replacement}{\code{[character]}  Must have an exact length of or equal to one of the following: \code{[1,length(call_names)]}.}
 }
 \value{
-\code{expr_replace_call_names}: [R Expression]
+\code{expr_replace_call_names}: \code{[expr]}
 }
 \description{
 Find and replace call names in an expression.
+}
+\examples{
+ x = expr(x + y + x + t)
+ expr_replace_call_names(x, '+', 'ops')
 }
