@@ -47,4 +47,6 @@ Find undefined variables in R code.
  })
  expr_find_undefined(x, init_vars = c('y', 'x'))
  expr_find_undefined(x, init_vars = c('y', 'x', 'c'))
+ expr_find_undefined(x=expr(c), init_vars = c('y', 'x', 'c'))
+ expr_find_undefined(x=expr(a), init_vars = c('y', 'x', 'c'))
 }

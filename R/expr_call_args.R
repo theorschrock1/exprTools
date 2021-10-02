@@ -16,10 +16,16 @@ expr_call_args=function(x){
   call_args(x)
 }
 #' @export
-expr_unlist=function(x){
+expr_unlist=function(x,recursive=FALSE){
+  if(recursive){
+    if(!is_call(x))return(x)
+    return(unlist(lapply(as.list(x),expr_unlist,recursive=TRUE)))
+  }
   if(!is_call(x))stop("x must be a call'")
+
   call_args(x)
 }
+
 #' @export
 unlist_syms=function(x){
   if(!is_call(x))stop("x must be a call'")

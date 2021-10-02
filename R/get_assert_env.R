@@ -185,6 +185,14 @@ get_assert_env=function(){
       if(default=='=""')default=""
       .(default,rlang::expr(assert_numeric(!!!dots)))
     },
+    atomic=function(default,...){
+      dots=.(...)
+      default<-enexpr(default)
+      if(missing(default))default=""
+      default= c("=",expr_deparse(default))%sep%""
+      if(default=='=""')default=""
+      .(default,rlang::expr(assert_atomic(!!!dots)))
+    },
     datetime=function(default,...){
       dots=.(...)
       default<-enexpr(default)
@@ -217,6 +225,7 @@ get_assert_env=function(){
       if(default=='=""')default=""
       .(default,rlang::expr(assert_named_list(!!!dots)))
     },
+
     reactive=function(default,...){
       dots=.(...)
       default<-enexpr(default)

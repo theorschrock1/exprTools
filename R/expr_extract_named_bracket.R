@@ -21,12 +21,12 @@
 #' expr_extract_named_bracket(x,name,grep=TRUE)
 
 #' @export
-expr_extract_named_bracket<-function(x,name,skip_first=TRUE,grep=FALSE){
+expr_extract_named_bracket<-function(x,name,skip_first=TRUE,grep=FALSE,fully_chained=FALSE){
   assertString(name)
   # assert(
   #   check_true(is.language(x))
   # )
   tree=CodeTree$new(x)
-  tree$return_named_bracket(name = name,skip_first=skip_first,grep=grep)
+  tree$return_named_bracket(name = name,skip_first=skip_first,grep=grep,fully_chained=fully_chained)
 }
 

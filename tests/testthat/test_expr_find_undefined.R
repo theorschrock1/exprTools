@@ -27,4 +27,6 @@ test_that("expr_find_undefined", {
   })
   expect_snapshot(expr_find_undefined(x, init_vars = c("y", "x")), cran = TRUE)
   expect_snapshot(expr_find_undefined(x, init_vars = c("y", "x", "c")), cran = TRUE)
+  expect_snapshot(expr_find_undefined(x=expr(c), init_vars = c('y', 'x', 'c')), cran = TRUE)
+  expect_snapshot(expr_find_undefined(x=expr(a), init_vars = c('y', 'x', 'c')),cran=TRUE)
 })

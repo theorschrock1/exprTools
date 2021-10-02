@@ -22,3 +22,16 @@ assert_named_list <- function(x, structure, null.ok = FALSE, extra.items = FALSE
     g_stop("invalid input '{.x}' in function `{fn_name}`:{item} {res}")
     # Returns: invisible(x)
 }
+#' @export
+assert_fn_args <- function(x, structure, null.ok = FALSE, extra.items = TRUE) {
+    # Assert list names and structure
+    v_collect()
+    structure <- enexpr(structure)
+    res <- expr_eval(check_fn_args(x, !!structure, null.ok = null.ok, extra.items = extra.items))
+    if (isTRUE(res))
+        return(invisible(res))
+    fn_name <- fn_call_name(n=2)
+
+    g_stop("Invalid function argument in `{fn_name}`:{res}")
+    # Returns: invisible(x)
+}

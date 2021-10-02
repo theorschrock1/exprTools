@@ -9,16 +9,17 @@ sDevTools::clearEnv() ## CTRL + SHIFT + R
 library(sDevTools)
 sDevTools::loadUtils()
 #Dev -----
-fn_call_name<-
- function(n=1){
+ccat<-
+ function(x){
    #Documentation
-   fdoc("Get the name of the current function call","[character(1)]")
+   fdoc("print a character vector as r code","[string]")
    #Assertions
-   assert_integerish(n,len=1)
+   assert_character(x)
    #TO DO
-   calls<-sys.calls()
-   deparse(calls[[length(calls)-n]][[1]])
-
+ as_glue( expr_text(x))
  }
 #document------
- fn_document(fn_call_name,overwrite = TRUE)
+ fn_document(ccat,{
+ccat(x=c("a","b","c"))
+ })
+

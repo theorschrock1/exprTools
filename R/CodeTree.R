@@ -367,7 +367,7 @@ CodeTree = R6Class(
 
       )
     },
-    .return_named_bracket = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,name,skip_first=FALSE,grep=FALSE) {
+    .return_named_bracket = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,name,skip_first=FALSE,grep=FALSE,fully_chained=FALSE) {
       #replacement<-'list'
       #if(is.null(index))print("NULL")
       flat_map <- function(.x, .f,index_start=1L, ...) {
@@ -383,7 +383,8 @@ CodeTree = R6Class(
           index_start = 2,
           name=name,
           skip_first=FALSE,
-          grep=grep
+          grep=grep,
+          fully_chained=fully_chained
         )
       }else{
         if(!is.null(index)){
@@ -409,11 +410,22 @@ CodeTree = R6Class(
             self_expr = self_expr,
             name=name,
             skip_first=FALSE,
-            grep=grep
+            grep=grep,
+            fully_chained=fully_chained
           ),
           call = {
-            if(grep)matched=as.character(x[[1]])=="["&&grepl(name,as.character(x[[2]]),fixed=TRUE)
-            if(grep==F)matched=as.character(x[[1]])=="["&&as.character(x[[2]])==name
+              mt1=x[[1]]
+              mt2=x[[2]]
+            if(fully_chained){
+              tmp=unique(expr_unlist(x,recursive = T))
+              mt2= tmp[[2]]
+              mt1= tmp[[1]]
+            }
+            if(grep)
+                matched=as.character(mt1)=="["&&grepl(name,as.character(mt2),fixed=TRUE)
+            if(grep==F)
+                matched=as.character(mt1)=="["&&as.character(mt2)==name
+
             if(matched){
               return(x)
             }else{
@@ -425,7 +437,8 @@ CodeTree = R6Class(
                 index_start = 2,
                 name=name,
                 skip_first=FALSE,
-                grep=grep
+                grep=grep,
+                fully_chained=fully_chained
               )
 
             }}
@@ -434,9 +447,9 @@ CodeTree = R6Class(
       }
       unlist(out)
     },
-    return_named_bracket=function(name,skip_first=TRUE,grep=FALSE){
+    return_named_bracket=function(name,skip_first=TRUE,grep=FALSE,fully_chained=FALSE){
       self$tmp_expr=self$expr
-      self$.return_named_bracket(name=name,skip_first = skip_first,grep=grep)
+      self$.return_named_bracket(name=name,skip_first = skip_first,grep=grep,fully_chained=fully_chained)
     },
     .return_call = function(x=self$tmp_expr,self_expr=expr(self$tmp_expr),index=NULL,call_name,skip_first=FALSE,grep=FALSE) {
       #replacement<-'list'

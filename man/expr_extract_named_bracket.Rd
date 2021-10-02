@@ -4,7 +4,13 @@
 \alias{expr_extract_named_bracket}
 \title{Extract named bracket calls from an expr}
 \usage{
-expr_extract_named_bracket(x, name, skip_first = TRUE, grep = FALSE)
+expr_extract_named_bracket(
+  x,
+  name,
+  skip_first = TRUE,
+  grep = FALSE,
+  fully_chained = FALSE
+)
 }
 \arguments{
 \item{x}{an expr}

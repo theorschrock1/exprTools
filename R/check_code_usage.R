@@ -18,16 +18,18 @@
 check_code_usage <- function(x, valid_vars, valid_functions, ...) {
     # Check code usage based on valid inputs
     assert_expr(x)
-    assert_character(valid_vars)
-    assert_character(valid_functions)
+    assert_character(valid_vars,null.ok=TRUE)
+    assert_character(valid_functions,null.ok=TRUE)
     error = NULL
-    call_check <- check_call_names(x, call_names = valid_functions, ...)
-    if (!isTRUE(call_check)) 
-        append(error) <- call_check
+    if(nnull(valid_functions)){
+        call_check <- check_call_names(x, call_names = valid_functions, ...)
+        if (!isTRUE(call_check))
+            append(error) <- call_check
+    }
     arg_check <- check_undefined_variables(x, init_vars = valid_vars)
-    if (!isTRUE(arg_check)) 
+    if (!isTRUE(arg_check))
         append(error) <- arg_check
-    if (len0(error)) 
+    if (len0(error))
         return(TRUE)
     as_error_message(paste0(error %sep% ".  ", "."))
     # Returns: \code{[TRUE|error_message]}

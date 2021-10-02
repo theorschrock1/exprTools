@@ -35,11 +35,16 @@
 #'  })
 #'  expr_find_undefined(x, init_vars = c('y', 'x'))
 #'  expr_find_undefined(x, init_vars = c('y', 'x', 'c'))
+#'  expr_find_undefined(x=expr(c), init_vars = c('y', 'x', 'c'))
+#'  expr_find_undefined(x=expr(a), init_vars = c('y', 'x', 'c'))
 #' @export
 expr_find_undefined <- function(x, init_vars) {
     # Find undefined variables in R code
     assert_expr(x)
+
     assert_character(init_vars, null.ok = TRUE)
+    if(is_symbol(x))
+        return(as.character(x)%NIN%init_vars)
     self = FindUndefined$new(x, init_vars = init_vars)
     self$find_undefined_wrapper()
     # Returns: \code{[character]} a character vector of undefined variables
