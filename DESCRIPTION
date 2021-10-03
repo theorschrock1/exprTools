@@ -1,7 +1,7 @@
 Package: exprTools
 Type: Package
 Title: Tools for manipulating R expressions
-Version: 0.1.0.9021
+Version: 0.1.0.9022
 Author: Theo Schrock
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Tools for manipulating R expressions.
@@ -14,6 +14,8 @@ Imports:
     stringr,
     glue,
     purrr
+Remotes:
+    theorschrock1/sUtils
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
