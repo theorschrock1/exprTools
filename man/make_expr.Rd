@@ -6,6 +6,9 @@
 \usage{
 make_expr(x)
 }
+\arguments{
+\item{x}{an r object}
+}
 \value{
 \code{make_expr}: expr
 }

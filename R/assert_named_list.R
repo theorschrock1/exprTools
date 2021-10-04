@@ -1,7 +1,6 @@
 #' Assert list names and structure.
 
 #' @name assert_named_list
-#' @param x
 #' @param x  \code{[object]} an object to check
 #' @param structure  \code{[list]}  Must be a named list.
 #' @param null.ok  \code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}

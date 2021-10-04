@@ -12,6 +12,8 @@ check_code_usage(x, valid_vars, valid_functions, ...)
 \item{valid_vars}{\code{[character]}}
 
 \item{valid_functions}{\code{[character]}}
+
+\item{...}{additional arguments}
 }
 \value{
 \code{check_code_usage}: \code{[TRUE|error_message]}

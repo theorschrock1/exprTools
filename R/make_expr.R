@@ -1,7 +1,7 @@
 #' Make an r expression from a obj.
 
 #' @name make_expr
-#' @param x
+#' @param x an r object
 #' @return \code{make_expr}: expr
 #' @examples
 

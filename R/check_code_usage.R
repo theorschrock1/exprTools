@@ -4,7 +4,7 @@
 #' @param x  \code{[expr]}
 #' @param valid_vars  \code{[character]}
 #' @param valid_functions  \code{[character]}
-#' @param ...
+#' @param ... additional arguments
 #' @return \code{check_code_usage}: \code{[TRUE|error_message]}
 #' @examples
 
