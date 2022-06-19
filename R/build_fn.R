@@ -1,12 +1,3 @@
-# my_fn=build_fn(x=string("as"),times=int(1),"...",{
-# rep(x,times)
-# })
-
-# my_fn=build_fn({
-#     rep(3,times=3)
-#    })
-
-
 #' @export
 build_fn=function(...){
   dots=enexprs(...)

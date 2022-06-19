@@ -1,6 +1,6 @@
 #' @importFrom R6 R6Class
 #' @export
-ReplaceCalls = R6Class(
+ReplaceCalls <- R6::R6Class(
   'ReplaceCalls',
   public = list(
     expr=NULL,

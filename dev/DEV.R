@@ -23,3 +23,11 @@ ccat<-
 ccat(x=c("a","b","c"))
  })
 
+commit_all_to_github(path = getwd())
+
+remotes::install_github('theorschrock/exprTools')
+guides()
+
+open_guide('heroku.R')
+remotes::install_github("theorschrock1/exprTools")
+

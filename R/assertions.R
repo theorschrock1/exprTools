@@ -1,3 +1,4 @@
+#' @importFrom checkmate makeAssertionFunction
 
 #' @export
 assert_any=function(x,...,env=caller_env()){
@@ -44,9 +45,9 @@ check_expr=function(x,expr_types=c("constant","symbol","pairlist","call")){
   return(TRUE)
 }
 #' @export
-assert_call = makeAssertionFunction(check_call)
+assert_call = checkmate::makeAssertionFunction(check_call)
 #' @export
-assert_expr = makeAssertionFunction(check_expr)
+assert_expr = checkmate::makeAssertionFunction(check_expr)
 #' @export
 check_exprs=function(x, any.missing = TRUE,all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
                      unique = FALSE, names = NULL, null.ok = FALSE){
@@ -59,6 +60,7 @@ check_exprs=function(x, any.missing = TRUE,all.missing = TRUE, len = NULL, min.l
 
   return(TRUE)
 }
+
 #' @export
-assert_exprs=makeAssertionFunction(check.fun = check_exprs)
+assert_exprs=checkmate::makeAssertionFunction(check.fun = check_exprs)
 

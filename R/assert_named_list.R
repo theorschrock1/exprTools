@@ -6,6 +6,7 @@
 #' @param null.ok  \code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}
 #' @param extra.items  \code{[logical]}  Must have an exact length of \code{1}.  Defaults to \code{FALSE}
 #' @return \code{assert_named_list}: invisible(x)
+
 #' @export
 assert_named_list <- function(x, structure, null.ok = FALSE, extra.items = FALSE) {
     # Assert list names and structure

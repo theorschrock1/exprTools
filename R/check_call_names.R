@@ -18,8 +18,9 @@
 #'  })
 #'  check_call_names(x, call_names = 'SUM')
 #'  check_call_names(x, call_names = 'SUM', ignore.assignments = '=')
+
 #' @export
-check_call_names <- function(x, call_names, env = NULL, ignore.wrapper = TRUE, ignore.assignments = c("=", 
+check_call_names <- function(x, call_names, env = NULL, ignore.wrapper = TRUE, ignore.assignments = c("=",
     "<-"), ignore.operators = c("+", "-", "/", "*", "==", "!=", ">=", ">", "<", "!"), ignore = NULL) {
     # Find call names in an expression
     assert_expr(x)
@@ -29,16 +30,16 @@ check_call_names <- function(x, call_names, env = NULL, ignore.wrapper = TRUE, i
     assert_character(ignore.operators, null.ok = TRUE)
     assert_character(ignore, null.ok = TRUE)
     assert_environment(env, null.ok = TRUE)
-    if (is.null(call_names) && is.null(env)) 
+    if (is.null(call_names) && is.null(env))
         g_stop("arguments `call_names` and `env` cannot both be NULL")
-    if (nnull(env)) 
+    if (nnull(env))
         call_names = c(call_names, names(env)[sapply(env, is, "function")])
     ignore = c(ignore, ignore.assignments, ignore.operators)
     out <- expr_find_call_names(x, ignore.wrapper = ignore.wrapper, ignore = ignore)
-    if (is_empty(out)) 
+    if (is_empty(out))
         return(TRUE)
     res = all(out %in% call_names)
-    if (isTRUE(res)) 
+    if (isTRUE(res))
         return(TRUE)
     missing <- out %NIN% call_names
     out = if (len(missing) > 1) {

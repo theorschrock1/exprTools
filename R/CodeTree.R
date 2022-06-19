@@ -1,6 +1,6 @@
-#' @import R6
+#' @importFrom R6 R6Class
 #' @export
-CodeTree = R6Class(
+CodeTree = R6::R6Class(
   'CodeTree',
   public = list(
     expr=NULL,

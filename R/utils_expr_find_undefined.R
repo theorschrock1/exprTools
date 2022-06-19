@@ -1,5 +1,5 @@
-
-FindUndefined = R6Class(
+#' @importFrom R6 R6Class
+FindUndefined = R6::R6Class(
   'FindUndefined',
   public = list(
     expr=NULL,
