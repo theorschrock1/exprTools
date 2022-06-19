@@ -1,13 +1,12 @@
 Package: exprTools
 Type: Package
 Title: Tools for manipulating R expressions
-Version: 0.1.0.9025
+Version: 0.1.0.9026
 Author: Theo Schrock
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Tools for manipulating R expressions.
 Imports:
     checkmate,
-    sUtils,
     R6,
     tictoc,
     rlang,
