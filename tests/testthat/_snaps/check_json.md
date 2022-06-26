@@ -26,3 +26,13 @@
     Output
       [1] "Names must be a permutation of set {'two'}, but has extra elements {'one'}"
 
+---
+
+    Code
+      check_json(x, check_named_list(structure = list(inputId = string(), label = string(),
+      value = date_format(NULL, format = "ymd"), min = date_format(NULL, format = "ymd"),
+      max = date_format(NULL, format = "ymd"), format = string(date("yyyy-mm-dd")),
+      startview = choice("month", choices = c("month", "year", "decade")))))
+    Output
+      [1] TRUE
+
