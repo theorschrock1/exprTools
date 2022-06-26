@@ -74,3 +74,4 @@ assert_json=function (x, check_output, .var.name = checkmate::vname(x), add = NU
   res = expr(check_json(x,!!enexpr(check_output))) |> eval()
   checkmate::makeAssertion(x, res, .var.name, add)
 }
+

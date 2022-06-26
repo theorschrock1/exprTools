@@ -231,7 +231,15 @@ get_assert_env=function(){
       if(missing(default))default=""
       default= c("=",expr_deparse(default))%sep%""
       if(default=='=""')default=""
-      .(default,rlang::expr(assert_josn(!!!dots)))
+      .(default,rlang::expr(assert_json(!!!dots)))
+    },
+    date_format=function(default,...){
+      dots=.(...)
+      default<-enexpr(default)
+      if(missing(default))default=""
+      default= c("=",expr_deparse(default))%sep%""
+      if(default=='=""')default=""
+      .(default,rlang::expr(assert_date_format(!!!dots)))
     },
     reactive=function(default,...){
       dots=.(...)

@@ -9,39 +9,31 @@ sDevTools::clearEnv() ## CTRL + SHIFT + R
 library(sDevTools)
 sDevTools::loadUtils()
 #Dev -----
-check_json<-
- function(x,check_output,null.ok=FALSE){
+check_date_format<-
+ function(x,format="ymd",null.ok=TRUE){
    #Documentation
-   fdoc("Check that a string is a valid JSON object","[TRUE|error]")
+   fdoc("Check if a string is in a valid date format","[TRUE|error_message]")
    #Assertions
-   check_output<-enexpr(check_output)
-   assert_call(check_output)
-   assert_logical(null.ok,len=1)
+   assert_choice(format, choices = c("ymd_h", "mdy_h", "dmy_h",
+"ymd_hm", "mdy_hm", "dmy_hm", "ymd_hms", "mdy_hms", "dmy_hms",
+"ym", "my", "yq",'ymd','mdy','dmy'))
+   assert_logical(null.ok, len = 1)
    #TO DO
    if(is.null(x)&&null.ok==TRUE)
      return(TRUE)
-   out<-try(jsonlite::fromJSON(x),silent = T)
 
-   if(is_error(out))
-     return('Invalid JSON string')
-   check<-expr_modify_fn_args( check_output,new_args=list(x=expr(out)))
-
-   res=eval(check)
-   if(!isTRUE(res))
-     return(str_replace(res,'Must be','Must be a JSON string'))
-   return(res)
+   out<-do.call(format,list(x,quiet=T))
+   if(is.na(out))
+     return(glue('Must be in `{format}` date format'))
+   return(TRUE)
  }
 #document------
- fn_document(check_json,{
-
-check_json(x='[1,3]',check_numeric(len=2))
-
-check_json(x='[1,3]',check_numeric(len=1))
-
-check_json(x='{"one":[1,3]}',check_named_list(structure=list(one=numeric())))
-
-check_json(x='{"one":[1,3]}',check_named_list(structure=list(two=numeric())))
-
- })
-
-commit_all_to_github()
+ fn_document(check_date_format,{
+   check_date_format('2022-01-01',format="ymd")
+   check_date_format('20-01-01',format="ymd")
+   check_date_format('01/01/2022',format="ymd")
+   check_date_format('01/30/2022',format="dmy")
+   check_date_format('01/12/2022',format="dmy")
+   check_date_format('01/12/2022 12:12:10',format="dmy")
+   check_date_format('01/12/2022 12:12:10',format="dmy_hms")
+ },overwrite = T)

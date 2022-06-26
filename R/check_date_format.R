@@ -29,3 +29,6 @@ check_date_format <- function(x, format = "ymd", null.ok = TRUE) {
     return(TRUE)
     # Returns: \code{[TRUE|error_message]}
 }
+
+#' @export
+assert_date_format=checkmate::makeAssertionFunction(check.fun = check_date_format)
