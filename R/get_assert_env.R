@@ -225,7 +225,14 @@ get_assert_env=function(){
       if(default=='=""')default=""
       .(default,rlang::expr(assert_named_list(!!!dots)))
     },
-
+    json=function(default,...){
+      dots=.(...)
+      default<-enexpr(default)
+      if(missing(default))default=""
+      default= c("=",expr_deparse(default))%sep%""
+      if(default=='=""')default=""
+      .(default,rlang::expr(assert_josn(!!!dots)))
+    },
     reactive=function(default,...){
       dots=.(...)
       default<-enexpr(default)

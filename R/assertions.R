@@ -64,3 +64,13 @@ check_exprs=function(x, any.missing = TRUE,all.missing = TRUE, len = NULL, min.l
 #' @export
 assert_exprs=checkmate::makeAssertionFunction(check.fun = check_exprs)
 
+#' @export
+assert_json=function (x, check_output, .var.name = checkmate::vname(x), add = NULL)
+{
+
+  if (missing(x))
+    stop(sprintf("argument \"%s\" is missing, with no default",
+                 .var.name))
+  res = expr(check_json(x,!!enexpr(check_output))) |> eval()
+  checkmate::makeAssertion(x, res, .var.name, add)
+}

@@ -5,6 +5,7 @@
 #' @import stringr
 #' @import glue
 #' @importFrom purrr flatten_chr
+#' @import jsonlite
 #' @export
 call_args=rlang::call_args
 
